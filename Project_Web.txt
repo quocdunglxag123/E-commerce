@@ -1,0 +1,34 @@
+1. Đề tài gì?
+Trang web: https://www.youtube.com/watch?v=dTFXufTgfOE&t=200s
+Màn hình: 1. Login account
+		  2. Register account
+		  3. Trang chủ  
+		  4. Chi tiết sản phẩm 
+		  5. giỏ hàng
+2. Các phiên bản version của công nghệ.
+Reactjs: 
+
+Java Spring boot
+
+
+
+3. Cách tổ chức source code
+Front-end: 
+	+ folder img chứa hình ảnh
+	+ Folder component: các component sẽ được dùng ở nhiều màn hình (input_component,....)
+	+ Folder container: chứa các màn hình (login, register,....)
+	+ Folder Config: nơi định nghĩa các constrant dùng ở nhiều màn hình (ví dụ: DATABASE_NAME, LOGIN_JAVA_PATH,...)
+	+ Folder Command: chứa những file sẽ gửi request đến java có chức năng gửi request và đón nhận request
+Back-end:
+	+ Folder controller: chứa những file đón nhận request và điều hướng các request
+	+ Folder dto: chứa những dữ liệu sẽ hiển thị trên màn hình
+	+ entity: mapping với các data trong database
+	+ service: chứa những xử lý chính
+
+
+Version Reactjs:
+Reactjs 18.2.0
+Nodejs: 18.16.1
+
+Version eclipse:
+https://drive.google.com/drive/folders/1kFYMrIqlW1ZfFPKU-0S5pnpe8raAquzP?usp=sharing

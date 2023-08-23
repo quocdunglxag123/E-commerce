@@ -1,0 +1,16 @@
+package com.ecommerce.storesystem.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class Login {
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
+
+    @ResponseBody
+
+    public NewDTO createNew(@RequestBody NewDTO model) {
+
+            return model;
+
+    }
+}

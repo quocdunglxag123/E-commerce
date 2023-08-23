@@ -1,0 +1,6 @@
+package com.ecommerce.storesystem.controller;
+
+@Controller
+public class Login {
+
+}
