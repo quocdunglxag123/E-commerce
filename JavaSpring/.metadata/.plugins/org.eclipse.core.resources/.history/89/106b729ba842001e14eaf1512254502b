@@ -1,0 +1,8 @@
+package com.ecommerce.storesystem.service.impl;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AccountServiceImpl implements AccountService {
+
+}

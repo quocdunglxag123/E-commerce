@@ -1,0 +1,10 @@
+package com.ecommerce.storesystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.ecommerce.storesystem.respository.AccountReposotory;
+
+public interface AccountService {
+	@Autowired
+	private AccountReposotory accountReposotory;
+}

@@ -1,0 +1,13 @@
+package com.ecommerce.storesystem.entity;
+
+import java.util.Date;
+
+public class BaseEntity {
+	@Id
+	private Long Id;
+	
+	private String updateDate;
+	private Date createDate;
+	
+	
+}

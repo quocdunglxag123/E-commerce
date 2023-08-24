@@ -1,0 +1,10 @@
+package com.ecommerce.storesystem.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "role")
+public class RoleEntity extends BaseEntity {
+	
+}
