@@ -11,7 +11,7 @@
 	<groupId>com.ecommerce</groupId>
 	<artifactId>store-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>store-system</name>
 	<description>ecommerce-system</description>
 	<properties>

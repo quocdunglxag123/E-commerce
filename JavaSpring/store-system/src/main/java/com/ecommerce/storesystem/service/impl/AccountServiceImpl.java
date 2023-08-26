@@ -14,7 +14,7 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 
 	@Override
-	public boolean checkAccount(AccountDto accountDto) {
+	public Object checkAccount(AccountDto accountDto) {
 		AccountEntity accountEntity = accountRepository.findByUserName(accountDto.getUserName());
 		if(accountEntity != null) {
 			if (accountEntity.getPassword().equals(accountDto.getPassword())
