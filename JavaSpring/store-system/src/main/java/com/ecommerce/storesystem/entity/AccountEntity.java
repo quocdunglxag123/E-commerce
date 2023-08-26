@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "account")
 public class AccountEntity extends BaseEntity {
 
-	@Column(unique=true)
+	@Column
 	private String userName;
 	@Column
 	private String password;
