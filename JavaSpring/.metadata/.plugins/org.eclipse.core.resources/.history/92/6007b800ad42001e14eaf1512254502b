@@ -1,6 +1,0 @@
-package com.ecommerce.storesystem.service;
-
-
-public interface AccountService {
-	Object getAccount(String id); 
-}
