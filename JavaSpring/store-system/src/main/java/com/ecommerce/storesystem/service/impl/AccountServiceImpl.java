@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.storesystem.dto.AccountDto;
+import com.ecommerce.storesystem.dto.AccountRegisterDto;
 import com.ecommerce.storesystem.entity.AccountEntity;
 import com.ecommerce.storesystem.respository.AccountRepository;
 import com.ecommerce.storesystem.service.AccountService;
@@ -24,4 +25,22 @@ public class AccountServiceImpl implements AccountService {
 		}
 		return false;
 	}
+	
+	//Insert new account to table account
+	public Object registerAccount(AccountRegisterDto accountRegisterDto) {
+		AccountEntity accountEntity = accountRepository.findByUserName(accountRegisterDto.getUserName());
+		AccountEntity newAccount = new AccountEntity();
+		if(accountEntity != null) {
+			return false;
+		}
+		newAccount.setUserName(accountRegisterDto.getUserName());
+		newAccount.setPassword(accountRegisterDto.getPassword());
+		newAccount.setFullName(accountRegisterDto.getFullName());
+		newAccount.setBirthday(accountRegisterDto.getBirthday());
+
+		accountRepository.save(newAccount);
+		return true;
+	}
+	
+	
 }
