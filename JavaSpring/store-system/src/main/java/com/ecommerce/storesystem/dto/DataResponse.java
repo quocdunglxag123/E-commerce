@@ -17,6 +17,12 @@ public class DataResponse {
 		this.errMsg = errMsg;
 		this.data = data;
 	}
+	public DataResponse(String status, String errMsg) {
+		super();
+		this.status = status;
+		this.errMsg = errMsg;
+		this.data = "";
+	}
 
 	public DataResponse(Object data) {
 		super();

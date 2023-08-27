@@ -2,12 +2,8 @@ package com.ecommerce.storesystem.dto;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class AccountDto {
+public class AccountNoPasswordDto {
 	private String userName;
-
-    private String password;
 	
 	private String fullName;
 	
@@ -15,20 +11,25 @@ public class AccountDto {
 	
 	private Date birthday;
 	
+
+	public AccountNoPasswordDto() {
+		super();
+	}
+
+	public AccountNoPasswordDto(String userName, String fullName, String phone, Date birthday) {
+		super();
+		this.userName = userName;
+		this.fullName = fullName;
+		this.phone = phone;
+		this.birthday = birthday;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getFullName() {
@@ -54,7 +55,4 @@ public class AccountDto {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	
-
-    
 }

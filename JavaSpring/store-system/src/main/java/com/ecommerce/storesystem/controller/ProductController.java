@@ -10,17 +10,12 @@ import com.ecommerce.storesystem.dto.DataResponse;
 import com.ecommerce.storesystem.service.AccountService;
 
 @RestController
-public class AccountController {
+public class ProductController {
 	@Autowired
 	private AccountService accountService;
 	
-	@PostMapping("/login")
-	public DataResponse accountLogin(@RequestBody AccountDto accountDto) {		
+	@PostMapping("/product")
+	public DataResponse accountLogin(@RequestBody AccountDto accountDto) {
 		return new DataResponse(accountService.checkAccount(accountDto));
-	}
-	
-	@PostMapping("/register")
-	public DataResponse accountRegister(@RequestBody AccountDto accountRegisterDto) {
-		return new DataResponse(accountService.registerAccount(accountRegisterDto));
 	}
 }

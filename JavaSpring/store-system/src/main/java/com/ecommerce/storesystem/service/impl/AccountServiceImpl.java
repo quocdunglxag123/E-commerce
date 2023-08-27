@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.storesystem.dto.AccountDto;
-import com.ecommerce.storesystem.dto.AccountRegisterDto;
 import com.ecommerce.storesystem.entity.AccountEntity;
+import com.ecommerce.storesystem.exception.AccountException;
 import com.ecommerce.storesystem.respository.AccountRepository;
 import com.ecommerce.storesystem.service.AccountService;
 
@@ -14,20 +14,26 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 
-	@Override
+	/**
+	 * Check username and password to login
+	 * @param AccountDto account info
+	 * @return boolean true
+	 */
 	public Object checkAccount(AccountDto accountDto) {
 		AccountEntity accountEntity = accountRepository.findByUserName(accountDto.getUserName());
+		//Check username in api is in database
 		if(accountEntity != null) {
+			//Check username and password in api is mapping equal with record in database
 			if (accountEntity.getPassword().equals(accountDto.getPassword())
 					&& accountEntity.getUserName().equals(accountDto.getUserName())) {
 				return true;
 			}
 		}
-		return false;
+		throw new AccountException(accountDto.getUserName());
 	}
 	
 	//Insert new account to table account
-	public Object registerAccount(AccountRegisterDto accountRegisterDto) {
+	public Object registerAccount(AccountDto accountRegisterDto) {
 		AccountEntity accountEntity = accountRepository.findByUserName(accountRegisterDto.getUserName());
 		AccountEntity newAccount = new AccountEntity();
 		if(accountEntity != null) {
