@@ -2,9 +2,7 @@ package com.ecommerce.storesystem.dto;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class AccountDto {
+public class AccountDto extends BaseDto{
 	private String userName;
 
     private String password;

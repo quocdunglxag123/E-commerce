@@ -1,5 +1,6 @@
 package com.ecommerce.storesystem.service;
 
-public class ProductService {
-
+public interface ProductService {
+	Object getAllProducts();
+	Object getProduct(Long id);
 }

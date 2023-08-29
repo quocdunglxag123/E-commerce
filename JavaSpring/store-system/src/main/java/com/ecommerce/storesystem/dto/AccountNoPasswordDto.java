@@ -2,7 +2,7 @@ package com.ecommerce.storesystem.dto;
 
 import java.util.Date;
 
-public class AccountNoPasswordDto {
+public class AccountNoPasswordDto  extends BaseDto{
 	private String userName;
 	
 	private String fullName;
