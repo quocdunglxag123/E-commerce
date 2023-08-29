@@ -16,7 +16,12 @@ public class ProductController {
 	
 	@PostMapping("/product")
 	public DataResponse accountLogin(@RequestBody ProductDto productDto) {
+		
+		if(productDto.getServiceCall().equals("SearchProduct")) {
+			return new DataResponse(productService.getProduct(productDto.getId()));
+		}else {
 			return new DataResponse(productService.getAllProducts());
+		}
 	}
 	
 }
