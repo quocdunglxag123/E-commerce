@@ -17,11 +17,18 @@ public class ProductController {
 	@PostMapping("/product")
 	public DataResponse accountLogin(@RequestBody ProductDto productDto) {
 		
-		if(productDto.getServiceCall().equals("SearchProduct")) {
+		if(productDto.getServiceCall().equals("getById")) {
 			return new DataResponse(productService.getProduct(productDto.getId()));
-		}else {
+		}else if(productDto.getServiceCall().equals("getAll")) {
 			return new DataResponse(productService.getAllProducts());
+		}else if(productDto.getServiceCall().equals("add")){
+			return new DataResponse(productService.addProduct(productDto));
+		}else if(productDto.getServiceCall().equals("update")){
+			return new DataResponse(productService.addProduct(productDto));
+		}else if(productDto.getServiceCall().equals("delete")){
+			return new DataResponse(productService.deleteProduct(productDto.getId()));
 		}
+		return new DataResponse("500", "Method Not Found");
 	}
 	
 }

@@ -2,22 +2,46 @@ package com.ecommerce.storesystem.entity;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Version;
 
 @MappedSuperclass
 public abstract class BaseEntity {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
-	@Column
-	private String updateDate;
-	@Column
+	
+	@LastModifiedDate
+	@Version
+	@Column(insertable = true, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updateDate;
+	
+	@CreatedDate
+	@Column(insertable = true, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	
+	public BaseEntity() {
+		super();
+	}
+	
+	public BaseEntity(Long id, Date updateDate, Date createDate) {
+		super();
+		this.id = id;
+		this.updateDate = updateDate;
+		this.createDate = createDate;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -26,22 +50,24 @@ public abstract class BaseEntity {
 		this.id = id;
 	}
 
-
-	public String getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
-	
-	public void setUpdateDate(String updateDate) {
+
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	
+
 	public Date getCreateDate() {
 		return createDate;
 	}
-	
+
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
+
+	
 	
 	
 }

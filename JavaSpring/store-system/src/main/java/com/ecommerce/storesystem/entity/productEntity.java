@@ -21,9 +21,9 @@ public class ProductEntity extends BaseEntity {
 	private String description;
 	
 	private int productWarranty;
-
-	private Boolean status;
-
+	
+	private int quantity;
+	
 	private String ram;
 	
 	private String rom;
@@ -37,7 +37,7 @@ public class ProductEntity extends BaseEntity {
 	private String camera;
 	
 	private String color;
-	
+		
 	private Long manufacturer;
 
 	
@@ -47,7 +47,7 @@ public class ProductEntity extends BaseEntity {
 
 
 	public ProductEntity(String name, BigDecimal price, BigDecimal discount, String unit, String image,
-			String description, int productWarranty, Boolean status, String ram, String rom, String screen,
+			String description, int productWarranty, int quantity, String ram, String rom, String screen,
 			String battery, String os, String camera, String color, Long manufacturer) {
 		super();
 		this.name = name;
@@ -57,7 +57,7 @@ public class ProductEntity extends BaseEntity {
 		this.image = image;
 		this.description = description;
 		this.productWarranty = productWarranty;
-		this.status = status;
+		this.quantity = quantity;
 		this.ram = ram;
 		this.rom = rom;
 		this.screen = screen;
@@ -139,13 +139,13 @@ public class ProductEntity extends BaseEntity {
 	}
 
 
-	public Boolean getStatus() {
-		return status;
+	public int getQuantity() {
+		return quantity;
 	}
 
 
-	public void setStatus(Boolean status) {
-		this.status = status;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 

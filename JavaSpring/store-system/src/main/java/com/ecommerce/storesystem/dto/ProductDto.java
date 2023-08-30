@@ -4,42 +4,44 @@ import java.math.BigDecimal;
 
 public class ProductDto extends BaseDto{
 	private String name;
+	
+	private BigDecimal  price;
 
-	private BigDecimal price;
-
-	private BigDecimal discount;
-
+	private BigDecimal  discount;
+	
 	private String unit;
-
+	
 	private String image;
-
+	
 	private String description;
-
+	
 	private int productWarranty;
-
-	private Boolean status;
-
+	
+	private int quantity;
+	
 	private String ram;
-
+	
 	private String rom;
-
+	
 	private String screen;
-
+	
 	private String battery;
-
+	
 	private String os;
-
+	
 	private String camera;
-
+	
 	private String color;
+		
+	private Long manufacturer;
 
 	public ProductDto() {
 		super();
 	}
-	
+
 	public ProductDto(String name, BigDecimal price, BigDecimal discount, String unit, String image, String description,
-			int productWarranty, Boolean status, String ram, String rom, String screen, String battery, String os,
-			String camera, String color) {
+			int productWarranty, int quantity, String ram, String rom, String screen, String battery, String os,
+			String camera, String color, Long manufacturer) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -48,7 +50,7 @@ public class ProductDto extends BaseDto{
 		this.image = image;
 		this.description = description;
 		this.productWarranty = productWarranty;
-		this.status = status;
+		this.quantity = quantity;
 		this.ram = ram;
 		this.rom = rom;
 		this.screen = screen;
@@ -56,9 +58,8 @@ public class ProductDto extends BaseDto{
 		this.os = os;
 		this.camera = camera;
 		this.color = color;
+		this.manufacturer = manufacturer;
 	}
-
-
 
 	public String getName() {
 		return name;
@@ -116,12 +117,12 @@ public class ProductDto extends BaseDto{
 		this.productWarranty = productWarranty;
 	}
 
-	public Boolean getStatus() {
-		return status;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setStatus(Boolean status) {
-		this.status = status;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public String getRam() {
@@ -179,7 +180,14 @@ public class ProductDto extends BaseDto{
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
-	
 
+	public Long getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Long manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	
+	
 }
