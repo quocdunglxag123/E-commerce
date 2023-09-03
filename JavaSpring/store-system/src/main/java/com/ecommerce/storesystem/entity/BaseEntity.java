@@ -5,7 +5,6 @@ import java.util.Date;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,12 +21,10 @@ public abstract class BaseEntity {
 	
 	@LastModifiedDate
 	@Version
-	@Column(insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 	
 	@CreatedDate
-	@Column(insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	

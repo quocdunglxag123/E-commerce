@@ -24,7 +24,7 @@ public class ProductController {
 		}else if(productDto.getServiceCall().equals("add")){
 			return new DataResponse(productService.addProduct(productDto));
 		}else if(productDto.getServiceCall().equals("update")){
-			return new DataResponse(productService.addProduct(productDto));
+			return new DataResponse(productService.updateProduct(productDto));
 		}else if(productDto.getServiceCall().equals("delete")){
 			return new DataResponse(productService.deleteProduct(productDto.getId()));
 		}

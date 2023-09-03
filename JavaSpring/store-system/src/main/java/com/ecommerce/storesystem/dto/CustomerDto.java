@@ -1,51 +1,23 @@
 package com.ecommerce.storesystem.dto;
 
-
-public class AccountDto extends BaseDto{
-	private String userName;
-
-    private String password;
-	
+public class CustomerDto extends BaseDto {
 	private String fullName;
-	
 	private String phone;
-	
 	private String address;
-	
 	private String birthday;
-	
-	private Long roleId;
+	private Long accountId;
 
-	public AccountDto() {
+	public CustomerDto() {
 		super();
 	}
 
-	public AccountDto(String userName, String password, String fullName, String phone, String address, String birthday,
-			Long roleId) {
+	public CustomerDto(String fullName, String phone, String address, String birthday, Long accountId) {
 		super();
-		this.userName = userName;
-		this.password = password;
 		this.fullName = fullName;
 		this.phone = phone;
 		this.address = address;
 		this.birthday = birthday;
-		this.roleId = roleId;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+		this.accountId = accountId;
 	}
 
 	public String getFullName() {
@@ -80,14 +52,12 @@ public class AccountDto extends BaseDto{
 		this.birthday = birthday;
 	}
 
-	public Long getRoleId() {
-		return roleId;
+	public Long getAccountId() {
+		return accountId;
 	}
 
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
 
-	
-    
 }

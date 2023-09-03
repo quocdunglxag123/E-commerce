@@ -13,14 +13,20 @@ import com.ecommerce.storesystem.service.AccountService;
 public class AccountController {
 	@Autowired
 	private AccountService accountService;
-	
-	@PostMapping("/login")
-	public DataResponse accountLogin(@RequestBody AccountDto accountDto) {		
-		return new DataResponse(accountService.checkAccount(accountDto));
+
+	@PostMapping("/account")
+	public DataResponse accountLogin(@RequestBody AccountDto accountDto) {
+		if (accountDto.getServiceCall().equals("login")) {
+			return new DataResponse(accountService.checkAccount(accountDto));
+		}else if(accountDto.getServiceCall().equals("register")) {
+			return new DataResponse(accountService.registerAccount(accountDto));
+		}else if(accountDto.getServiceCall().equals("edit")) {
+			return new DataResponse(accountService.updateAccount(accountDto));
+		}else if(accountDto.getServiceCall().equals("delete")) {
+			return new DataResponse(accountService.deleteAccount(accountDto.getId()));
+		}
+		return new DataResponse("500", "Method Not Found");
+
 	}
-	
-	@PostMapping("/register")
-	public DataResponse accountRegister(@RequestBody AccountDto accountRegisterDto) {
-		return new DataResponse(accountService.registerAccount(accountRegisterDto));
-	}
+
 }

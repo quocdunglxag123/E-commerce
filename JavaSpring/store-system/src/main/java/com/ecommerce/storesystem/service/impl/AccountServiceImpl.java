@@ -5,15 +5,19 @@ import org.springframework.stereotype.Service;
 
 import com.ecommerce.storesystem.dto.AccountDto;
 import com.ecommerce.storesystem.entity.AccountEntity;
+import com.ecommerce.storesystem.entity.CustomerEntity;
 import com.ecommerce.storesystem.exception.AccountException;
 import com.ecommerce.storesystem.respository.AccountRepository;
+import com.ecommerce.storesystem.respository.CustomerRepository;
 import com.ecommerce.storesystem.service.AccountService;
 
 @Service
 public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
-
+	@Autowired
+	private CustomerRepository customerRepository;
+	
 	/**
 	 * Check username and password to login
 	 * @param AccountDto account info
@@ -26,25 +30,54 @@ public class AccountServiceImpl implements AccountService {
 			//Check username and password in api is mapping equal with record in database
 			if (accountEntity.getPassword().equals(accountDto.getPassword())
 					&& accountEntity.getUserName().equals(accountDto.getUserName())) {
-				return true;
+				return accountEntity.getId();
 			}
 		}
-		throw new AccountException(accountDto.getUserName());
+		throw new AccountException("Invalid username or password");
 	}
 	
+	
+	
 	//Insert new account to table account
-	public Object registerAccount(AccountDto accountRegisterDto) {
-		AccountEntity accountEntity = accountRepository.findByUserName(accountRegisterDto.getUserName());
-		AccountEntity newAccount = new AccountEntity();
+	public Object registerAccount(AccountDto accountDto) {
+		
+		AccountEntity accountEntity = accountRepository.findByUserName(accountDto.getUserName());
 		if(accountEntity != null) {
-			return false;
+			throw new AccountException(accountDto.getUserName()+ "is Duplicated!");
 		}
-		newAccount.setUserName(accountRegisterDto.getUserName());
-		newAccount.setPassword(accountRegisterDto.getPassword());
-		newAccount.setFullName(accountRegisterDto.getFullName());
-		newAccount.setBirthday(accountRegisterDto.getBirthday());
-
+		AccountEntity newAccount = new AccountEntity();
+		newAccount.setUserName(accountDto.getUserName());
+		newAccount.setPassword(accountDto.getPassword());
+		newAccount.setRoleId((long)3);
 		accountRepository.save(newAccount);
+		CustomerEntity newCustomer = new CustomerEntity();
+		newCustomer.setFullName(accountDto.getFullName());
+		newCustomer.setBirthday(accountDto.getBirthday());
+		newCustomer.setAddress(accountDto.getAddress());
+		newCustomer.setAccountId(newAccount.getId());
+		newCustomer.setPhone(accountDto.getPhone());
+		customerRepository.save(newCustomer);
+		return newAccount.getId();
+	}
+
+
+
+	@Override
+	public Object updateAccount(AccountDto accountDto) {
+		AccountEntity accountEntityUpdate = accountRepository.findOneById(accountDto.getId());
+		if (accountEntityUpdate != null) {
+			accountEntityUpdate.setAccountEntity(accountDto);
+			accountRepository.save(accountEntityUpdate);
+			return true;
+		}
+		return false;
+	}
+
+
+
+	@Override
+	public Object deleteAccount(Long id) {
+		accountRepository.deleteById(id);
 		return true;
 	}
 	

@@ -8,4 +8,6 @@ import com.ecommerce.storesystem.entity.AccountEntity;
 @Repository
 public interface AccountRepository extends JpaRepository<AccountEntity, Long>{
 	AccountEntity findByUserName(String userName);
+	AccountEntity findOneById(Long id);	
+
 }

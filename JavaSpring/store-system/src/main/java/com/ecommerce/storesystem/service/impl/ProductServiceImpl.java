@@ -9,10 +9,7 @@ import com.ecommerce.storesystem.mapstruct.ProductMapper;
 import com.ecommerce.storesystem.respository.ProductRepository;
 import com.ecommerce.storesystem.service.ProductService;
 
-import jakarta.transaction.Transactional;
-
 @Service
-@Transactional
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository productRepo;
@@ -25,7 +22,6 @@ public class ProductServiceImpl implements ProductService {
 		this.productMapper = productMapper;
 		this.productRepo = productRepo;
 	}
-
 	
 	@Override
 	public Object getAllProducts() {
@@ -37,7 +33,6 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.productEntityToProductDto(productRepo.findOneById(id));
 	}
 
-
 	@Override
 	public Object addProduct(ProductDto productDto) {
 		ProductEntity productEntity = productMapper.productDtoToProductEntity(productDto);		
@@ -47,13 +42,12 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public Object updateProduct(ProductDto productDto) {
-		
-//		if (productRepo.findById(productDto.getId()).isPresent()) {
-//			ProductEntity productToUpdate = productMapper.productDtoToProductEntity(productDto);
-//			productToUpdate.setId(productDto.getId());
-//			productRepo.save(productToUpdate);
-//			return true;
-//		}
+		ProductEntity productEntityUpdate = productRepo.findOneById(productDto.getId());
+		if (productEntityUpdate != null) {
+			productEntityUpdate.setProductEntity(productDto);
+			productRepo.save(productEntityUpdate);
+			return true;
+		}
 		return false;
 	}
 

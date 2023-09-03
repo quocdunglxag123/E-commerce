@@ -34,6 +34,8 @@ public class ProductDto extends BaseDto{
 	private String color;
 		
 	private Long manufacturer;
+	
+	private Long accountId;
 
 	public ProductDto() {
 		super();
@@ -41,7 +43,7 @@ public class ProductDto extends BaseDto{
 
 	public ProductDto(String name, BigDecimal price, BigDecimal discount, String unit, String image, String description,
 			int productWarranty, int quantity, String ram, String rom, String screen, String battery, String os,
-			String camera, String color, Long manufacturer) {
+			String camera, String color, Long manufacturer, Long accountId) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -59,6 +61,7 @@ public class ProductDto extends BaseDto{
 		this.camera = camera;
 		this.color = color;
 		this.manufacturer = manufacturer;
+		this.accountId = accountId;
 	}
 
 	public String getName() {
@@ -188,6 +191,13 @@ public class ProductDto extends BaseDto{
 	public void setManufacturer(Long manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	
-	
+
+	public Long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+
 }

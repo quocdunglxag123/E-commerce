@@ -1,6 +1,5 @@
 package com.ecommerce.storesystem.dto;
 
-import java.util.Date;
 
 public class AccountNoPasswordDto  extends BaseDto{
 	private String userName;
@@ -9,14 +8,14 @@ public class AccountNoPasswordDto  extends BaseDto{
 	
 	private String phone;
 	
-	private Date birthday;
+	private String birthday;
 	
 
 	public AccountNoPasswordDto() {
 		super();
 	}
 
-	public AccountNoPasswordDto(String userName, String fullName, String phone, Date birthday) {
+	public AccountNoPasswordDto(String userName, String fullName, String phone, String birthday) {
 		super();
 		this.userName = userName;
 		this.fullName = fullName;
@@ -48,11 +47,11 @@ public class AccountNoPasswordDto  extends BaseDto{
 		this.phone = phone;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 }
