@@ -1,5 +1,7 @@
 package com.ecommerce.storesystem.dto;
 
+import java.util.Date;
+
 public class OrderDto extends BaseDto {
 	private boolean paid;
 
@@ -9,22 +11,32 @@ public class OrderDto extends BaseDto {
 
 	private String fullName;
 
-	private Long productId;
+	private String productIds;
 
 	private Long accountId;
-
+	
+	private Long statusId;
+	
+	private Date startDelivery;
+	
+	private Date endDelivery;
+	
 	public OrderDto() {
 		super();
 	}
 
-	public OrderDto(boolean paid, String phone, String address, String fullName, Long productId, Long accountId) {
+	public OrderDto(boolean paid, String phone, String address, String fullName, String productIds, Long accountId,
+			Long statusId, Date startDelivery, Date endDelivery) {
 		super();
 		this.paid = paid;
 		this.phone = phone;
 		this.address = address;
 		this.fullName = fullName;
-		this.productId = productId;
+		this.productIds = productIds;
 		this.accountId = accountId;
+		this.statusId = statusId;
+		this.startDelivery = startDelivery;
+		this.endDelivery = endDelivery;
 	}
 
 	public boolean isPaid() {
@@ -59,12 +71,12 @@ public class OrderDto extends BaseDto {
 		this.fullName = fullName;
 	}
 
-	public Long getProductId() {
-		return productId;
+	public String getProductIds() {
+		return productIds;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setProductIds(String productIds) {
+		this.productIds = productIds;
 	}
 
 	public Long getAccountId() {
@@ -74,5 +86,31 @@ public class OrderDto extends BaseDto {
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
 	}
+
+	public Long getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(Long statusId) {
+		this.statusId = statusId;
+	}
+
+	public Date getStartDelivery() {
+		return startDelivery;
+	}
+
+	public void setStartDelivery(Date startDelivery) {
+		this.startDelivery = startDelivery;
+	}
+
+	public Date getEndDelivery() {
+		return endDelivery;
+	}
+
+	public void setEndDelivery(Date endDelivery) {
+		this.endDelivery = endDelivery;
+	}
+
+	
 
 }
