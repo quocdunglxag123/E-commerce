@@ -6,9 +6,11 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.storesystem.dto.AccountDto;
 import com.ecommerce.storesystem.entity.AccountEntity;
 import com.ecommerce.storesystem.entity.CustomerEntity;
+import com.ecommerce.storesystem.entity.OrderEntity;
 import com.ecommerce.storesystem.exception.AccountException;
 import com.ecommerce.storesystem.respository.AccountRepository;
 import com.ecommerce.storesystem.respository.CustomerRepository;
+import com.ecommerce.storesystem.respository.OrderRepository;
 import com.ecommerce.storesystem.service.AccountService;
 
 @Service
@@ -17,6 +19,8 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 	@Autowired
 	private CustomerRepository customerRepository;
+	@Autowired
+	private OrderRepository orderRepository;
 	
 	/**
 	 * Check username and password to login
@@ -57,18 +61,39 @@ public class AccountServiceImpl implements AccountService {
 		newCustomer.setAccountId(newAccount.getId());
 		newCustomer.setPhone(accountDto.getPhone());
 		customerRepository.save(newCustomer);
-		return newAccount.getId();
+		OrderEntity orderEntity = new OrderEntity();
+		orderEntity.setAccountId(newAccount.getId());
+		orderEntity.setStatusId((long)1);
+		orderEntity.setPaid(false);
+		orderRepository.save(orderEntity);
+		
+		newAccount.setPassword("");
+		return newAccount;
 	}
 
 
 
 	@Override
 	public Object updateAccount(AccountDto accountDto) {
-		AccountEntity accountEntityUpdate = accountRepository.findOneById(accountDto.getId());
-		if (accountEntityUpdate != null) {
-			accountEntityUpdate.setAccountEntity(accountDto);
-			accountRepository.save(accountEntityUpdate);
-			return true;
+		AccountEntity accountEntity = accountRepository.findOneById(accountDto.getId());
+		if (accountEntity != null) {
+			//Self Account Update
+			if(accountEntity.getUserName() == accountDto.getUserName()) {
+				accountEntity.setAccountEntity(accountDto);
+				accountRepository.save(accountEntity);
+				return true;
+			//Admin Update
+			}else {
+				if(accountEntity.getRoleId() == 1) {
+					AccountEntity accountEntityUpdate = accountRepository.findByUserName(accountDto.getUserName());
+					accountEntityUpdate.setAccountEntity(accountDto);
+					accountRepository.save(accountEntityUpdate);
+					return true;
+				}else {
+					throw new AccountException(accountDto.getId()+ " is Not Permit To Update Account "+accountDto.getUserName());	
+				}
+			}
+			
 		}
 		return false;
 	}

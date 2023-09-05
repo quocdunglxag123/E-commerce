@@ -40,7 +40,7 @@ public class ProductEntity extends BaseEntity {
 	
 	private String color;
 		
-	private Long manufacturer;
+	private String manufacturer;
 	
 	private Long accountId;
 	
@@ -50,7 +50,7 @@ public class ProductEntity extends BaseEntity {
 
 	public ProductEntity(String name, BigDecimal price, BigDecimal discount, String unit, String image,
 			String description, int productWarranty, int quantity, String ram, String rom, String screen,
-			String battery, String os, String camera, String color, Long manufacturer, Long accountId) {
+			String battery, String os, String camera, String color, String manufacturer, Long accountId) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -191,11 +191,11 @@ public class ProductEntity extends BaseEntity {
 		this.color = color;
 	}
 
-	public Long getManufacturer() {
+	public String getManufacturer() {
 		return manufacturer;
 	}
 
-	public void setManufacturer(Long manufacturer) {
+	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
