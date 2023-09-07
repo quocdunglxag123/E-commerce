@@ -7,4 +7,5 @@ import com.ecommerce.storesystem.entity.RoleEntity;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long>{
 	RoleEntity findOneById(Long id);	
+	RoleEntity findByRoleName(String roleName);
 }

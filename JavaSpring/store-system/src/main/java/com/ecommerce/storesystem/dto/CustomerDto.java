@@ -1,17 +1,19 @@
 package com.ecommerce.storesystem.dto;
 
+import java.util.Date;
+
 public class CustomerDto extends BaseDto {
 	private String fullName;
 	private String phone;
 	private String address;
-	private String birthday;
+	private Date birthday;
 	private Long accountId;
 
 	public CustomerDto() {
 		super();
 	}
 
-	public CustomerDto(String fullName, String phone, String address, String birthday, Long accountId) {
+	public CustomerDto(String fullName, String phone, String address, Date birthday, Long accountId) {
 		super();
 		this.fullName = fullName;
 		this.phone = phone;
@@ -44,11 +46,11 @@ public class CustomerDto extends BaseDto {
 		this.address = address;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.ecommerce.storesystem.dto.CustomerDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -35,6 +37,14 @@ public class CustomerEntity extends BaseEntity{
 		this.address = address;
 		this.birthday = birthday;
 		this.accountId = accountId;
+	}
+	
+	public void setCustomerEntity(CustomerDto customerDto) {
+		this.fullName = customerDto.getFullName();
+		this.phone = customerDto.getPhone();
+		this.address = customerDto.getAddress();
+		this.birthday = customerDto.getBirthday();
+		this.accountId = customerDto.getAccountId();
 	}
 
 	public String getFullName() {

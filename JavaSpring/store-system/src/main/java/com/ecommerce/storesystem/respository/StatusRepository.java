@@ -7,4 +7,5 @@ import com.ecommerce.storesystem.entity.StatusEntity;
 @Repository
 public interface StatusRepository extends JpaRepository<StatusEntity, Long>{
 	StatusEntity findOneById(Long id);	
+	StatusEntity findByStatusName(String statusName);	
 }
