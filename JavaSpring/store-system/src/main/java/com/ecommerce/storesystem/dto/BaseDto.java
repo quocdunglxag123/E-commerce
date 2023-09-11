@@ -2,12 +2,20 @@ package com.ecommerce.storesystem.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public abstract class BaseDto {
 	
 	private Long id;
 	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd HH:mm:ss") 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
 	private Date updateDate;
-
+	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd HH:mm:ss") 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
 	private Date createDate;
 	
 	private String serviceCall;
